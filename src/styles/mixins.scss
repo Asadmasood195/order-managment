@@ -1,0 +1,22 @@
+@mixin widthHeight($width: '', $height: '') {
+  width: $width;
+  height: $height;
+}
+@mixin topLeft($top: '', $left: '') {
+  top: $top;
+  left: $left;
+}
+@mixin visibility($v: '', $o: '') {
+  visibility: $v;
+  opacity: $o;
+}
+@mixin transistion {
+  -webkit-transition: all 0.3s ease;
+}
+@mixin transform($a, $b) {
+  -webkit-transform: translate($a, $b);
+}
+@mixin bg($bg: '', $col: '') {
+  background-color: $bg;
+  color: $col;
+}

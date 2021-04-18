@@ -9,12 +9,15 @@ const Login = ({ history }) => {
         script.defer = 1
         script.src = "resources/login.js"
         head.appendChild(script)
-        console.log(script)
     }
     useEffect(() => {
         working()
     }, [])
     const signUpUser = (e) => {
+        e.preventDefault()
+        history.push("/dashboard")
+    }
+    const loginUser = (e) => {
         e.preventDefault()
         history.push("/dashboard")
     }
@@ -32,7 +35,7 @@ const Login = ({ history }) => {
                         <button type='submit' class="submit-btn">Sign up</button>
                     </div>
                 </form>
-                <form >
+                <form onSubmit={loginUser} >
                     <div class="login slide-up">
                         <div class="center">
                             <h2 class="form-title" id="login"><span>or</span>Log in</h2>
@@ -40,7 +43,7 @@ const Login = ({ history }) => {
                                 <input type="email" class="input" placeholder="Email" />
                                 <input type="password" class="input" placeholder="Password" />
                             </div>
-                            <button class="submit-btn">Log in</button>
+                            <button type='submit' class="submit-btn">Log in</button>
                         </div>
                     </div>
                 </form>
