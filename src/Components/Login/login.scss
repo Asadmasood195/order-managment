@@ -1,16 +1,17 @@
-// @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
 html {
-  min-height: 100vh;
   @include bg($white_background);
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
 .parent_login {
+  @include bg($white_background);
   position: relative;
   overflow: hidden;
-  @include bg($white_background);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,13 +30,10 @@ html {
   &::after {
     @include visibility('', 0.8);
     @include topLeft(0, 0);
-
     content: '';
     position: absolute;
-    // top: 0;
     right: 0;
     bottom: 0;
-    // left: 0;
     background-repeat: no-repeat;
     background-position: left bottom;
     background-size: 500px;
@@ -86,14 +84,14 @@ html {
 
     .form-holder {
       @include transistion();
-      border-radius: 15px;
       @include bg($white_color);
       @include visibility(visible, 1);
+      border-radius: 15px;
       overflow: hidden;
       margin-top: 50px;
 
       .input {
-        @include widthHeight(100%, 30px);
+        @include widthHeight(100%, 40px);
         border: 0;
         outline: none;
         box-shadow: none;
@@ -183,7 +181,7 @@ html {
         margin-top: 50px;
 
         .input {
-          @include widthHeight(100%, 30px);
+          @include widthHeight(100%, 40px);
           border: 0;
           outline: none;
           box-shadow: none;
@@ -207,17 +205,14 @@ html {
         @include bg($sky_color, rgba(256, 256, 256, 0.7));
         @include visibility(visible, 1);
         @include widthHeight(100%);
-
         border: 0;
         border-radius: 15px;
         display: block;
         margin: 15px auto;
         padding: 15px 45px;
-        // width: 100%;
         font-size: $sub_heading;
         font-weight: bold;
         cursor: pointer;
-
         &:hover {
           @include transistion();
           @include bg($button_color);
@@ -234,8 +229,6 @@ html {
       @include transistion();
       @include transform(-50%, 0%);
       @include topLeft(10%);
-
-      // top: 10%;
     }
 
     &.slide-up .form-holder,

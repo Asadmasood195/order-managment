@@ -3,8 +3,10 @@ import Login from './Components/Login/Login'
 // const Login = React.lazy(() => import("./Components/Login/Login"))
 import { BrowserRouter, Route } from "react-router-dom"
 import Dashboard from './Components/dashboard/Dashboard'
+import { useState } from 'react'
 
 function App() {
+
   return (
     <BrowserRouter>
       <div className="App">

@@ -1,0 +1,17 @@
+// @import '~antd/dist/antd.css';
+@import 'antd/dist/antd.dark.css';
+@media (prefers-color-scheme: light) {
+  @import 'antd/dist/antd.css';
+  //   @import 'antd/lib/style/themes/default.less';
+}
+
+/* Dark mode CSS */
+@media (prefers-color-scheme: dark) {
+  @import 'antd/dist/antd.dark.css';
+  //   @import 'antd/lib/style/themes/dark.less';
+}
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+* {
+  font-family: 'Fira Sans', Helvetica, Arial, sans-serif !important;
+}

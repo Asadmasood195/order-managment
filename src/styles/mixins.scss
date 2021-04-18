@@ -10,13 +10,13 @@
   visibility: $v;
   opacity: $o;
 }
-@mixin transistion {
-  -webkit-transition: all 0.3s ease;
+@mixin bg($bg: '', $col: '') {
+  background-color: $bg;
+  color: $col;
 }
 @mixin transform($a, $b) {
   -webkit-transform: translate($a, $b);
 }
-@mixin bg($bg: '', $col: '') {
-  background-color: $bg;
-  color: $col;
+@mixin transistion {
+  -webkit-transition: all 0.3s ease;
 }
