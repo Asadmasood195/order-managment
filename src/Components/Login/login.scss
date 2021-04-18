@@ -1,10 +1,14 @@
 // @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
 @import '../../styles/variables.scss';
 
-html,
-body {
-  position: relative;
+html {
   min-height: 100vh;
+  background-color: $white_background;
+}
+
+.parent_login {
+  position: relative;
+  // min-height: 100vh;
   background-color: $white_background;
   display: flex;
   align-items: center;
@@ -13,6 +17,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+// body {
+//   position: relative;
+//   min-height: 100vh;
+//   background-color: $white_background;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   font-family: $font_family;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
 
 .form-structor {
   background-color: #222;
@@ -70,7 +85,7 @@ body {
     }
 
     .form-title {
-      color: #fff;
+      color: $white_color;
       font-size: $main_heading;
       text-align: center;
       span {
@@ -140,7 +155,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #fff;
+    background-color: $white_color;
     z-index: 5;
     -webkit-transition: all 0.3s ease;
 
@@ -150,7 +165,7 @@ body {
       left: 50%;
       top: -20px;
       -webkit-transform: translate(-50%, 0);
-      background-color: #fff;
+      background-color: $white_color;
       width: 200%;
       height: 250px;
       border-radius: 50%;
@@ -182,7 +197,7 @@ body {
 
       .form-holder {
         border-radius: 15px;
-        background-color: #fff;
+        background-color: $white_color;
         border: 1px solid #eee;
         overflow: hidden;
         margin-top: 50px;

@@ -1,13 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './login.scss'
 
 
-const Login = () => {
+const Login = ({ history }) => {
+    const working = () => {
+        var head = document.getElementsByTagName('head')[0]
+        var script = document.createElement('script')
+        script.defer = 1
+        script.src = "resources/login.js"
+        head.appendChild(script)
+        console.log(script)
+    }
+    useEffect(() => {
+        working()
+    }, [])
+    const signUpUser = (e) => {
+        e.preventDefault()
+        history.push("/dashboard")
+    }
     return (
-        <div>
+        <div className='parent_login'>
             <div class="form-structor">
-                <form >
-
+                <form onSubmit={signUpUser} >
                     <div class="signup">
                         <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
                         <div class="form-holder">
@@ -15,11 +29,10 @@ const Login = () => {
                             <input type="email" class="input" placeholder="Email" />
                             <input type="password" class="input" placeholder="Password" />
                         </div>
-                        <button class="submit-btn">Sign up</button>
+                        <button type='submit' class="submit-btn">Sign up</button>
                     </div>
                 </form>
                 <form >
-
                     <div class="login slide-up">
                         <div class="center">
                             <h2 class="form-title" id="login"><span>or</span>Log in</h2>

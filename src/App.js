@@ -1,12 +1,18 @@
-import logo from './logo.svg'
 import './App.css'
 import Login from './Components/Login/Login'
+// const Login = React.lazy(() => import("./Components/Login/Login"))
+import { BrowserRouter, Route } from "react-router-dom"
+import Dashboard from './Components/dashboard/Dashboard'
 
 function App() {
   return (
-    <div className="App">
-      <Login />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Route exact path='/' component={Login} />
+        <Route exact path='/dashboard' component={Dashboard} />
+        {/* < Login /> */}
+      </div>
+    </BrowserRouter>
   )
 }
 

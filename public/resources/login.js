@@ -1,10 +1,10 @@
 console.clear()
+var loginBtn = document.getElementById('login')
+var signupBtn = document.getElementById('signup')
 
-const loginBtn = document.getElementById('login')
-const signupBtn = document.getElementById('signup')
 
 loginBtn.addEventListener('click', (e) => {
-    let parent = e.target.parentNode.parentNode
+    var parent = e.target.parentNode.parentNode
     Array.from(e.target.parentNode.parentNode.classList).find((element) => {
         if (element !== "slide-up") {
             parent.classList.add('slide-up')
@@ -16,7 +16,7 @@ loginBtn.addEventListener('click', (e) => {
 })
 
 signupBtn.addEventListener('click', (e) => {
-    let parent = e.target.parentNode
+    var parent = e.target.parentNode
     Array.from(e.target.parentNode.classList).find((element) => {
         if (element !== "slide-up") {
             parent.classList.add('slide-up')
