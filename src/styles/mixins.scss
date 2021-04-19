@@ -27,6 +27,7 @@
 // dark theme
 @mixin darkThemes {
   @import url('antd/dist/antd.dark.css');
+  // @import url('./darkTheme.scss');
   @include font-family();
   @include bg($dark_moon, $white_color);
   .ant-layout {
@@ -71,6 +72,8 @@
 // Light theme
 @mixin lightThemes {
   @import url('antd/dist/antd.css');
+  // @import './LightTheme.scss';
+  // @import url('./LightTheme.scss');
   @include bg($white_color, $moon_color);
   .ant-menu {
     @include bg($dark_moon, $white_color);
