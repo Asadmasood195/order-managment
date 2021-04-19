@@ -99,7 +99,7 @@ const Dashboard = ({ history }) => {
                         style={{
                             margin: '24px 16px',
                             padding: 24,
-                            minHeight: 470
+                            minHeight: 480
                         }}>
                         {TableA && <ReportsTable />}
                         {TableB && <CustomersTable />}
