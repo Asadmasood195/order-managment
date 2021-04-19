@@ -34,9 +34,10 @@
   }
   .anticon-menu-fold,
   .anticon-menu-unfold {
-    @include bg('', $white_color);
-
-    // color: $white_color !important;
+    color: $white_color;
+  }
+  .ant-layout-header {
+    position: relative;
   }
   .ant-layout-footer {
     @include bg($moon_color);
@@ -52,24 +53,16 @@
   }
   .ant-layout {
     @include bg($white_color);
-
-    // background-color: $white_color !important;
   }
   .ant-layout-sider {
     @include bg($dark_moon);
-
-    // background-color: $dark_moon !important;
   }
   .ant-layout-header {
     @include bg($dark_moon);
-
     position: relative;
-    // background-color: $dark_moon !important;
   }
   .anticon-menu-fold,
   .anticon-menu-unfold {
     @include bg('', $white_color);
-
-    // color: $white_color !important;
   }
 }

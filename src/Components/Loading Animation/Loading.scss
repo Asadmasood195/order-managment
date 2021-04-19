@@ -1,0 +1,6 @@
+@import '../../styles/mixins.scss';
+.animated_gif {
+  @include bg(transparent);
+  @include topLeft(40%, 45%);
+  position: absolute;
+}

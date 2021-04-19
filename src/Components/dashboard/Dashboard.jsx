@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from 'react'
+import React, { useState, Fragment } from 'react'
 import { Button, Layout, Menu, Switch } from 'antd'
 import {
     MenuUnfoldOutlined,
@@ -11,26 +11,20 @@ import {
 import '../../styles/styles.scss'
 import './dashboard.scss'
 import { Footer } from 'antd/lib/layout/layout'
-import useWindowDimensions from '../Window Dimension/useWindowDimensions'
-
+import Table from '../Tables/Table'
+// import useWindowDimensions from '../Window Dimension/useWindowDimensions'
+// const Table = React.lazy(() => import('../Tables/Table'))
 const { Header, Sider, Content } = Layout
 
 
 const Dashboard = () => {
-    const { width } = useWindowDimensions()
+    // const { width } = useWindowDimensions()
     const [collapsed, setCollapsed] = useState(false)
     const [themetoggle, setThemeToggle] = useState(false)
     const [theme, setTheme] = useState('light')
-    // const [collapsing, setcollapsing] = useState(!(width > 500));
-
-    const toggleCollapsed = () => {
-        setCollapsed(!collapsed)
-    }
     const changeTheme = value => {
         setThemeToggle(!themetoggle)
         setTheme(themetoggle ? 'light' : 'dark')
-        console.log(theme, themetoggle)
-        console.log(themetoggle)
     }
 
     const toggle = () => {
@@ -46,8 +40,8 @@ const Dashboard = () => {
                     </Header>
                     <Menu theme={theme} mode="inline" defaultSelectedKeys={['1']}>
                         <Menu.Item key="1" icon={<UserOutlined />}>
-                            nav 1
-            </Menu.Item>
+                            Open
+                        </Menu.Item>
                         <Menu.Item key="2" icon={<VideoCameraOutlined />}>
                             nav 2
             </Menu.Item>
@@ -76,10 +70,10 @@ const Dashboard = () => {
                         })}
                         <Switch
                             className='theme_switch'
-                            checked={theme}
+                            // checked={theme}
                             onChange={changeTheme}
-                            checkedChildren='light'
-                            unCheckedChildren='dark'>
+                            checkedChildren='dark'
+                            unCheckedChildren='light'>
                         </Switch>
                     </Header>
                     <Content
@@ -89,8 +83,8 @@ const Dashboard = () => {
                             padding: 24,
                             minHeight: 470
                         }}>
-                        Content
-          </Content>
+                        <Table />
+                    </Content>
                 </Layout>
             </Layout>
         </div >

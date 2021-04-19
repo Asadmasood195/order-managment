@@ -1,20 +1,23 @@
 import './App.css'
-import Login from './Components/Login/Login'
-// const Login = React.lazy(() => import("./Components/Login/Login"))
+import React, { Suspense } from 'react'
 import { BrowserRouter, Route } from "react-router-dom"
-import Dashboard from './Components/dashboard/Dashboard'
-import { useState } from 'react'
+import LoadingComponent from './Components/Loading Animation/Loading'
+const Dashboard = React.lazy(() => import("./Components/dashboard/Dashboard"))
+const Login = React.lazy(() => import("./Components/Login/Login"))
 
 
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <Route exact path='/' component={Login} />
-        <Route exact path='/dashboard' component={Dashboard} />
-        {/* < Login /> */}
-      </div>
+      <Suspense fallback={<div><LoadingComponent /></div>}>
+
+        <div className="App">
+          <Route exact path='/' component={Login} />
+          <Route exact path='/dashboard' component={Dashboard} />
+          {/* < Login /> */}
+        </div>
+      </Suspense>
     </BrowserRouter>
   )
 }
