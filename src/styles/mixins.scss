@@ -20,3 +20,56 @@
 @mixin transistion {
   -webkit-transition: all 0.3s ease;
 }
+@mixin font-family {
+  font-family: $font_family;
+}
+
+// dark theme
+@mixin darkThemes {
+  @import url('antd/dist/antd.dark.css');
+  @include font-family();
+  @include bg($dark_moon, $white_color);
+  .ant-layout {
+    @include bg($dark_moon);
+  }
+  .anticon-menu-fold,
+  .anticon-menu-unfold {
+    @include bg('', $white_color);
+
+    // color: $white_color !important;
+  }
+  .ant-layout-footer {
+    @include bg($moon_color);
+  }
+}
+
+// Light theme
+@mixin lightThemes {
+  @import url('antd/dist/antd.css');
+  @include bg($white_color, $moon_color);
+  .ant-menu {
+    @include bg($dark_moon, $white_color);
+  }
+  .ant-layout {
+    @include bg($white_color);
+
+    // background-color: $white_color !important;
+  }
+  .ant-layout-sider {
+    @include bg($dark_moon);
+
+    // background-color: $dark_moon !important;
+  }
+  .ant-layout-header {
+    @include bg($dark_moon);
+
+    position: relative;
+    // background-color: $dark_moon !important;
+  }
+  .anticon-menu-fold,
+  .anticon-menu-unfold {
+    @include bg('', $white_color);
+
+    // color: $white_color !important;
+  }
+}

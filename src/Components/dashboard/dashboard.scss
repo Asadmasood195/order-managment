@@ -1,5 +1,54 @@
-.site-layout-background > .content_height {
-  margin: 24px 16px !important;
-  padding: 24 !important;
-  min-height: 600 !important;
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+body {
+  .darkTheme {
+    @include darkThemes();
+  }
+  .lightTheme {
+    @include lightThemes();
+  }
+  .theme_switch {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+  .ant-layout {
+    @include bg($dark_moon);
+    // background-color: $moon_color !important;
+  }
+  .ant-layout-footer {
+    position: absolute;
+    bottom: 0;
+    @include bg($dark_moon);
+    width: 100%;
+    .ant-btn {
+      // display: block;
+      // width: 100%;
+    }
+  }
+  // .logout_footer {
+  //   bottom: 2 !important;
+  // }
+  .logo {
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 10px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .logo {
+    float: right;
+    margin: 16px 0 16px 24px;
+  }
 }
+// .site-layout-background {
+// }
+
+// .darkTheme {
+//   @include dark($darkTheme);
+// }
+// .lightTheme {
+//   @include ligth($lightTheme)
+// }
+// @include theme-colors(true, white, black);

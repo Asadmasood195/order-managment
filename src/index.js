@@ -5,6 +5,9 @@ import App from './App'
 import './styles/styles.scss'
 import reportWebVitals from './reportWebVitals'
 // import 'antd/dist/antd.css'
+// import '~antd/dist/antd.css';
+
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
