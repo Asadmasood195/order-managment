@@ -93,7 +93,7 @@ html {
       margin-top: 50px;
 
       .input {
-        @include widthHeight(100%, 40px);
+        @include widthHeight(100%, 30px);
         border: 0;
         outline: none;
         box-shadow: none;
@@ -183,7 +183,7 @@ html {
         margin-top: 50px;
 
         .input {
-          @include widthHeight(100%, 40px);
+          @include widthHeight(100%, 30px);
           border: 0;
           outline: none;
           box-shadow: none;
@@ -191,7 +191,7 @@ html {
           line-height: 30px;
           padding: 8px 15px;
           border-bottom: 1px solid #eee;
-          font-size: $sub_heading;
+          font-size: $normal_font;
 
           &:last-child {
             border-bottom: 0;

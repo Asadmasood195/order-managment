@@ -19,7 +19,7 @@ body {
   .ant-layout-footer {
     position: absolute;
     bottom: 5px;
-    @include bg($dark_moon);
+    @include bg($moon_color);
     @include widthHeight(100%);
   }
   .logo {
