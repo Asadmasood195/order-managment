@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
 
 html {
-  @include bg($white_background);
+  // @include bg($white_background);
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -11,6 +11,7 @@ html {
 .parent_login {
   @include bg($white_background);
   @include font-family();
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
   display: flex;
