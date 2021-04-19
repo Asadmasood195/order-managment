@@ -30,7 +30,7 @@
   @include font-family();
   @include bg($dark_moon, $white_color);
   .ant-layout {
-    @include bg($dark_moon);
+    @include bg($white_color);
   }
   .anticon-menu-fold,
   .anticon-menu-unfold {
@@ -41,6 +41,9 @@
   }
   .ant-layout-footer {
     @include bg($moon_color);
+  }
+  .content_height {
+    padding: 0 !important;
   }
 }
 
@@ -61,8 +64,14 @@
     @include bg($dark_moon);
     position: relative;
   }
+  .content_height {
+    padding: 0 !important;
+  }
   .anticon-menu-fold,
   .anticon-menu-unfold {
     @include bg('', $white_color);
+  }
+  .ant-table-thead > tr > th {
+    @include bg($button_color);
   }
 }

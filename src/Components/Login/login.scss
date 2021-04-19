@@ -10,12 +10,13 @@ html {
 
 .parent_login {
   @include bg($white_background);
+  @include font-family();
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: $font_family;
+  // font-family: $font_family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
