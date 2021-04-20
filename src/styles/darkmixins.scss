@@ -1,7 +1,7 @@
 // dark theme
 @mixin darkThemes {
   @import url('antd/dist/antd.dark.css');
-  @include TableTheme($moon_color, $white_color);
+  @include TableTheme($moon_color, $white_color, $dark_color);
   @include fontFamily();
   @include bg($dim_dark, $white_color);
   .ant-layout {

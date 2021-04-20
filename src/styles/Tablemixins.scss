@@ -1,4 +1,25 @@
-@mixin TableTheme($background: '', $col: '') {
+// @import './mixins.scss';
+
+@mixin TableTheme($background: '', $col: '', $othere: '') {
+  .dropdown_search {
+    .ant-select {
+      @include bg($col, $othere);
+      input {
+        @include bg($background, $col);
+      }
+    }
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+      @include borderRadius('', 5px);
+      @include bg($background, $col);
+    }
+    //   input {
+    //     @include input(200px, 30px, 1px solid, 5px);
+    //   }
+    // }
+    //   input {
+    //     // @include fontFamily($normal_font);
+    //   }
+  }
   .table_container {
     @include fontFamily();
     display: block;
@@ -19,7 +40,7 @@
         th {
           @include fontFamily($sub_heading);
           input {
-            @include bg($background, $col);
+            @include bg($col, $background);
             @include borderRadius(1px solid, 5px);
             padding-left: 3px;
           }

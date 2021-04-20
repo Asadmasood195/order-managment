@@ -2,8 +2,9 @@ import React, { Fragment } from 'react'
 import { useTable, usePagination, useGlobalFilter, useAsyncDebounce } from 'react-table'
 import './styleTable.scss'
 import makeData from './makeData'
+import { Select } from 'antd'
 
-// Define a default UI for filtering
+const { Option } = Select
 function GlobalFilter({
   preGlobalFilteredRows,
   globalFilter,
@@ -16,8 +17,31 @@ function GlobalFilter({
   }, 200)
 
   return (
-    <span>
-      Search:{' '}
+    <span className='dropdown_search'>
+      <Select
+        // onChange={e => {
+        //   setValue(e.target.value)
+        //   onChange(e.target.value)
+        // }}
+        showSearch
+        style={{ width: 200 }}
+        placeholder="Search to Select"
+        optionFilterProp="children"
+        globalFilter={(input, option) =>
+          option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+        }
+      // filterSort={(optionA, optionB) =>
+      //   optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+      // }
+      >
+        <Option value="1">Not Identified</Option>
+        <Option value="2">Closed</Option>
+        <Option value="3">Communicated</Option>
+        <Option value="4">Identified</Option>
+        <Option value="5">Resolved</Option>
+        <Option value="6">Cancelled</Option>
+      </Select>
+      {/* Search:{' '}
       <input
         value={value || ""}
         onChange={e => {
@@ -26,23 +50,19 @@ function GlobalFilter({
         }}
         placeholder={`${count} records...`}
         style={{
-          fontSize: '1.1rem',
+          fontSize: '14px',
         }}
-      />
+      /> */}
     </span>
   )
 }
 function Table({ columns, data }) {
-  // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     prepareRow,
-    page, // Instead of using 'rows', we'll use page,
-    // which has only the rows for the active page
-
-    // The rest of these things are super handy, too ;)
+    page,
     canPreviousPage,
     canNextPage,
     pageOptions,
@@ -65,8 +85,6 @@ function Table({ columns, data }) {
     useGlobalFilter,
     usePagination,
   )
-
-  // Render the UI for your table
   return (
     <>
 

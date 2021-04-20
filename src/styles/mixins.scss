@@ -36,6 +36,46 @@
   border: $border;
   border-radius: $radius;
 }
+@mixin input(
+  $width: '',
+  $height: '',
+  $border: '',
+  $radius: '',
+  $bg: '',
+  $col: '',
+  $hover: ''
+) {
+  width: $width;
+  height: $height;
+  border: $border;
+  border-radius: $radius;
+  background-color: $bg;
+  color: $col;
+  outline: none;
+  input:hover,
+  input:focus {
+    background-color: $hover;
+  }
+}
+
+// .container {
+//   &.active {
+//     ...
+//   }
+//   &.hovered {
+//     ...
+//   }
+
+//   .button {
+//     &.hovered {
+//       ...
+//     }
+//     .text {
+//       ...
+//     }
+//   }
+// }
+
 //................................  Table mixins
 // @mixin TableTheme($background: '', $col: '') {
 //   .table_container {
