@@ -1,17 +1,19 @@
 // Light theme
 @mixin lightThemes {
   @import url('antd/dist/antd.css');
-  // @import './LightTheme.scss';
-  // @import url('./LightTheme.scss');
   @include TableTheme($dark_moon, $white_color);
   @include bg($white_color, $moon_color);
   .ant-menu {
     @include bg($dark_moon, $white_color);
+    .ant-menu-item {
+      @include fontFamily($sub_heading);
+    }
   }
   .ant-layout {
     @include bg($white_color);
   }
   .ant-layout-sider {
+    @include fontFamily($normal_font);
     @include bg($dark_moon);
   }
   .ant-layout-header {
@@ -25,9 +27,6 @@
   .anticon-menu-unfold {
     @include bg('', $white_color);
   }
-  //   .ant-table-thead > tr > th {
-  //     @include bg($button_color);
-  //   }
   .ant-layout-footer {
     @include bg($dark_moon);
   }

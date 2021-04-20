@@ -1,5 +1,7 @@
 import React, { useState, Fragment } from 'react'
 import { Button, Layout, Menu, Switch } from 'antd'
+import '../../styles/styles.scss'
+import './dashboard.scss'
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
@@ -8,11 +10,8 @@ import {
     UploadOutlined,
     SettingOutlined
 } from '@ant-design/icons'
-import '../../styles/styles.scss'
-import './dashboard.scss'
 import { Footer } from 'antd/lib/layout/layout'
 import BlotterTableV3 from '../Tables/ReportsTable'
-// import ReportsTable from '../Tables/ReportsTable'
 import CustomersTable from '../Tables/CustomersTable'
 import ProductsTable from '../Tables/ProductsTable'
 const { Header, Sider, Content } = Layout
@@ -20,22 +19,18 @@ const { Header, Sider, Content } = Layout
 
 const Dashboard = ({ history }) => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || localStorage.setItem('theme', 'light'))
+    const [themetoggle, setThemeToggle] = useState(localStorage.getItem('theme') === 'light' ? false : true)
+    const [collapsed, setCollapsed] = useState(false)
     const [TableA, setTableA] = useState(true)
     const [TableB, setTableB] = useState(false)
     const [TableC, setTableC] = useState(false)
-    const [collapsed, setCollapsed] = useState(false)
     // const [themetoggle, setThemeToggle] = useState(false)
-    const [themetoggle, setThemeToggle] = useState(localStorage.getItem('theme') === 'light' ? false : true)
-    // const [currentTheme, setcurrentTheme] = useState()
-
-    // localStorage.setItem('theme', 'light')
     const changeTheme = value => {
         setThemeToggle(!themetoggle)
         setTheme(themetoggle ? 'light' : 'dark')
         localStorage.setItem('theme', value ? 'dark' : 'light')
 
     }
-    console.log(localStorage.getItem('theme'))
 
     const toggle = () => {
         setCollapsed(!collapsed)
@@ -98,11 +93,9 @@ const Dashboard = ({ history }) => {
                         })}
                         <Switch
                             className='theme_switch'
-                            // checked={theme === 'light' ? false : true}
                             checked={theme === 'dark' ? true : false}
                             onChange={changeTheme}
                             checkedChildren={theme === 'light' ? 'Dark' : 'Light'}
-                            // checkedChildren='Dark'
                             unCheckedChildren={theme === 'light' ? 'Dark' : 'Light'}
                         >
                         </Switch>

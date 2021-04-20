@@ -1,7 +1,6 @@
 // dark theme
 @mixin darkThemes {
   @import url('antd/dist/antd.dark.css');
-  // @import url('./darkTheme.scss');
   @include TableTheme($moon_color, $white_color);
   @include fontFamily();
   @include bg($dark_moon, $white_color);
@@ -27,24 +26,10 @@
   }
   .ant-layout-footer {
     @include bg($dark_color);
-    // @include fontFamily($main_heading);
   }
   .content_height {
     padding: 0 !important;
   }
-  //   .ant-table-thead > tr > th {
-  //     @include bg($moon_color, $white_color);
-  //   }
-  //   .ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
-  //   .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
-  //   .ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td,
-  //   .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
-  //     @include bg($button_color, $white_color);
-  //   }
-  //   .ant-table {
-  //     @include bg($moon_color, $white_color);
-  //   }
-
   h4 {
     @include bg('', $white_color);
   }

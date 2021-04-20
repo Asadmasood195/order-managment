@@ -11,17 +11,19 @@
       // border-bottom: 1px solid black;
     }
     table {
+      @include fontFamily($normal_font);
       @include widthHeight(100%);
-      // width: 100%;
       border-spacing: 0;
       thead {
         th {
+          @include fontFamily($sub_heading);
           input {
             @include bg($background, $col);
             @include borderRadius(1px solid, 5px);
             padding-left: 3px;
-            // border: 1px solid !important;
-            // border-radius: 5px;
+          }
+          input:focus {
+            outline: none;
           }
         }
       }
@@ -40,17 +42,15 @@
 
       th,
       td {
-        @include widthHeight(100px);
+        @include widthHeight(120px);
         @include borderRadius(1px solid);
-
+        @include fontFamily($normal_font);
         margin: 0;
         padding: 0.5rem;
         border-bottom: 1px solid black;
-        // border: 1px solid;
         &.collapse {
           @include widthHeight(0.0000000001%);
         }
-
         :last-child {
           border-right: 0;
         }
