@@ -78,7 +78,7 @@ function Table({ columns, data }) {
               <th
                 colSpan={visibleColumns.length}
                 style={{
-                  textAlign: 'left',
+                  //   textAlign: 'left',
                   border: '0'
                 }}
               >

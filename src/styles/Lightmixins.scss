@@ -19,6 +19,9 @@
   .ant-layout-header {
     @include bg($dark_moon);
     position: relative;
+    .theme_switch {
+      @include bg($dim_dark);
+    }
   }
   .content_height {
     padding: 0 !important;
