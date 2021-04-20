@@ -10,7 +10,7 @@ html {
 
 .parent_login {
   @include bg($dark_color);
-  @include font-family();
+  @include fontFamily();
   min-height: 100vh;
   position: relative;
   overflow: hidden;

@@ -19,16 +19,23 @@ const { Header, Sider, Content } = Layout
 
 
 const Dashboard = ({ history }) => {
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || localStorage.setItem('theme', 'light'))
     const [TableA, setTableA] = useState(true)
     const [TableB, setTableB] = useState(false)
     const [TableC, setTableC] = useState(false)
     const [collapsed, setCollapsed] = useState(false)
-    const [themetoggle, setThemeToggle] = useState(false)
-    const [theme, setTheme] = useState('light')
+    // const [themetoggle, setThemeToggle] = useState(false)
+    const [themetoggle, setThemeToggle] = useState(localStorage.getItem('theme') === 'light' ? false : true)
+    // const [currentTheme, setcurrentTheme] = useState()
+
+    // localStorage.setItem('theme', 'light')
     const changeTheme = value => {
         setThemeToggle(!themetoggle)
         setTheme(themetoggle ? 'light' : 'dark')
+        localStorage.setItem('theme', value ? 'dark' : 'light')
+
     }
+    console.log(localStorage.getItem('theme'))
 
     const toggle = () => {
         setCollapsed(!collapsed)
@@ -59,7 +66,9 @@ const Dashboard = ({ history }) => {
                     <Header className="header">
                         <div className="logo" />
                     </Header>
-                    <Menu theme={theme} mode="inline" defaultSelectedKeys={['1']}>
+                    <Menu
+                        theme={theme}
+                        mode="inline" defaultSelectedKeys={['1']}>
                         <Menu.Item key="1" icon={<UserOutlined />} onClick={showReportsTable}>
                             Reports
                         </Menu.Item>
@@ -89,10 +98,13 @@ const Dashboard = ({ history }) => {
                         })}
                         <Switch
                             className='theme_switch'
-                            // checked={theme}
+                            // checked={theme === 'light' ? false : true}
+                            checked={theme === 'dark' ? true : false}
                             onChange={changeTheme}
-                            checkedChildren='Dark'
-                            unCheckedChildren='Light'>
+                            checkedChildren={theme === 'light' ? 'Dark' : 'Light'}
+                            // checkedChildren='Dark'
+                            unCheckedChildren={theme === 'light' ? 'Dark' : 'Light'}
+                        >
                         </Switch>
                     </Header>
                     <Content

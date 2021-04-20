@@ -4,7 +4,6 @@
 body {
   .darkTheme {
     // @import url('../../styles/darkTheme.scss');
-
     @include darkThemes();
   }
   .lightTheme {

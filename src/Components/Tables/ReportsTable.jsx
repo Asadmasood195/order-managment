@@ -72,8 +72,8 @@ function Table({ columns, data }) {
 
       <table {...getTableProps()}>
         <thead>
-          {headerGroups.map(headerGroup => (
-            <Fragment>
+          {headerGroups.map((headerGroup, i) => (
+            <Fragment key={i}>
               {/* <tr> */}
               <th
                 colSpan={visibleColumns.length}
@@ -90,8 +90,8 @@ function Table({ columns, data }) {
               </th>
               {/* </tr> */}
               <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
-                  <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                {headerGroup.headers.map((column, i) => (
+                  <th key={i} {...column.getHeaderProps()}>{column.render('Header')}</th>
                 ))}
               </tr>
             </Fragment>
@@ -101,7 +101,7 @@ function Table({ columns, data }) {
           {page.map((row, i) => {
             prepareRow(row)
             return (
-              <tr {...row.getRowProps()}>
+              <tr key={i} {...row.getRowProps()}>
                 {row.cells.map(cell => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
@@ -140,7 +140,6 @@ function Table({ columns, data }) {
               const page = e.target.value ? Number(e.target.value) - 1 : 0
               gotoPage(page)
             }}
-          // style={{ width: '100px', border: '1px soild', borderRadius: '5px solid' }}
           />
         </span>{' '}
         <select
@@ -161,45 +160,6 @@ function Table({ columns, data }) {
 }
 
 function App() {
-  // const columns = React.useMemo(
-  //   () => [
-  //     {
-  //       Header: '',
-  //       columns: [
-  //         {
-  //           Header: 'First Name',
-  //           accessor: 'firstName',
-  //         },
-  //         {
-  //           Header: 'Last Name',
-  //           accessor: 'lastName',
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       Header: '',
-  //       columns: [
-  //         {
-  //           Header: 'Age',
-  //           accessor: 'age',
-  //         },
-  //         {
-  //           Header: 'Visits',
-  //           accessor: 'visits',
-  //         },
-  //         {
-  //           Header: 'Status',
-  //           accessor: 'status',
-  //         },
-  //         {
-  //           Header: 'Profile Progress',
-  //           accessor: 'progress',
-  //         },
-  //       ],
-  //     },
-  //   ],
-  //   []
-  // )
   const columns = React.useMemo(
     () => [
       {
@@ -230,14 +190,17 @@ function App() {
     []
   )
 
-  const data = React.useMemo(() => makeData(100000), [])
+  const data = React.useMemo(() => makeData(100), [])
 
   return (
-    <div className='table_container'>
-      <div className="tableWrap">
-        <Table columns={columns} data={data} />
+    <Fragment>
+      <h4>Top selling Products |Tabular Representation</h4>
+      <div className='table_container'>
+        <div className="tableWrap">
+          <Table columns={columns} data={data} />
+        </div>
       </div>
-    </div>
+    </Fragment>
   )
 }
 

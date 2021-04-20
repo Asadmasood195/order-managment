@@ -1,4 +1,9 @@
 @import '../Components/Tables/styleTable.scss';
+@import './variables';
+@import './Tablemixins.scss';
+@import './darkmixins.scss';
+@import './Lightmixins.scss';
+
 @mixin widthHeight($width: '', $height: '') {
   width: $width;
   height: $height;
@@ -21,196 +26,203 @@
 @mixin transistion {
   -webkit-transition: all 0.3s ease;
 }
-@mixin font-family {
+@mixin fontFamily($fontSize: '', $weight: '') {
   font-family: $font_family;
+  font-size: $fontSize;
+  font-weight: $weight;
+}
+
+@mixin borderRadius($border: '', $radius: '') {
+  border: $border;
+  border-radius: $radius;
 }
 //................................  Table mixins
-@mixin TableTheme($background: '', $col: '') {
-  .table_container {
-    @include font-family();
-    display: block;
-    max-width: 100%;
-    .tableWrap {
-      display: block;
-      max-width: 99%;
-      // overflow-x: hidden;
-      overflow-y: hidden;
-      // border-bottom: 1px solid black;
-    }
-    table {
-      width: 100%;
-      border-spacing: 0;
-      thead {
-        th {
-          input {
-            @include bg($background, $col);
-            padding-left: 3px;
-            border: 1px solid !important;
-            border-radius: 5px;
-          }
-        }
-      }
-      tr {
-        th {
-          @include bg($background, $col);
-        }
-      }
-      tr {
-        :last-child {
-          td {
-            border-bottom: 0;
-          }
-        }
-      }
+// @mixin TableTheme($background: '', $col: '') {
+//   .table_container {
+//     @include font-family();
+//     display: block;
+//     max-width: 100%;
+//     .tableWrap {
+//       display: block;
+//       max-width: 99%;
+//       // overflow-x: hidden;
+//       overflow-y: hidden;
+//       // border-bottom: 1px solid black;
+//     }
+//     table {
+//       width: 100%;
+//       border-spacing: 0;
+//       thead {
+//         th {
+//           input {
+//             @include bg($background, $col);
+//             padding-left: 3px;
+//             border: 1px solid !important;
+//             border-radius: 5px;
+//           }
+//         }
+//       }
+//       tr {
+//         th {
+//           @include bg($background, $col);
+//         }
+//       }
+//       tr {
+//         :last-child {
+//           td {
+//             border-bottom: 0;
+//           }
+//         }
+//       }
 
-      th,
-      td {
-        margin: 0;
-        padding: 0.5rem;
-        border-bottom: 1px solid black;
-        // border-right: 1px solid black;
-        border: 1px solid;
-        width: 1%;
-        &.collapse {
-          width: 0.0000000001%;
-        }
+//       th,
+//       td {
+//         margin: 0;
+//         padding: 0.5rem;
+//         border-bottom: 1px solid black;
+//         // border-right: 1px solid black;
+//         border: 1px solid;
+//         width: 1%;
+//         &.collapse {
+//           width: 0.0000000001%;
+//         }
 
-        :last-child {
-          border-right: 0;
-        }
-      }
-    }
+//         :last-child {
+//           border-right: 0;
+//         }
+//       }
+//     }
 
-    .pagination {
-      // width: 188%;
-      padding: 0.5rem;
-      display: flex;
-      justify-content: flex-end;
-      button {
-        @include widthHeight(30px);
-        @include bg($background, $col);
-        margin-right: 5px;
-        border-radius: 4px !important;
-        border: 0.1px;
-      }
-      button:active {
-        border: 0.1px;
-      }
-      .page_input_and_row_select {
-        // width: 100%;
+//     .pagination {
+//       // width: 188%;
+//       padding: 0.5rem;
+//       display: flex;
+//       justify-content: flex-end;
+//       button {
+//         @include widthHeight(30px);
+//         @include bg($background, $col);
+//         margin-right: 5px;
+//         border-radius: 4px !important;
+//         border: 0.1px;
+//       }
+//       button:active {
+//         border: 0.1px;
+//       }
+//       .page_input_and_row_select {
+//         // width: 100%;
 
-        .pageNumber_input {
-          @include widthHeight(100px);
-          @include bg($background, $col);
-          padding-left: 4px;
-          border-radius: 5px;
-          border: 1.5px solid $background;
-          margin-right: 10px;
-        }
-      }
-      select {
-        @include bg($background, $col);
-        // @include widthHeight('', 30px);
-        border-radius: 5px;
-      }
-    }
-  }
-}
+//         .pageNumber_input {
+//           @include widthHeight(100px);
+//           @include bg($background, $col);
+//           padding-left: 4px;
+//           border-radius: 5px;
+//           border: 1.5px solid $background;
+//           margin-right: 10px;
+//         }
+//       }
+//       select {
+//         @include bg($background, $col);
+//         // @include widthHeight('', 30px);
+//         border-radius: 5px;
+//       }
+//     }
+//   }
+// }
 
-// dark theme
-@mixin darkThemes {
-  @import url('antd/dist/antd.dark.css');
-  // @import url('./darkTheme.scss');
-  @include TableTheme($moon_color, $white_color);
-  @include font-family();
-  @include bg($dark_moon, $white_color);
-  .ant-layout {
-    @include bg($dim_dark);
-  }
-  .ant-menu.ant-menu-dark {
-    @include bg($dark_color);
-  }
-  .anticon-menu-fold,
-  .anticon-menu-unfold {
-    color: $white_color;
-  }
-  // .anticon-menu-fold {
-  //   .ant-layout-header {
-  //     margin-left: 30px !important;
-  //   }
-  // }
-  .ant-layout-header {
-    @include bg($dark_color);
-    position: relative;
-  }
-  .ant-layout-footer {
-    @include bg($dark_color);
-  }
-  .content_height {
-    padding: 0 !important;
-  }
-  .ant-table-thead > tr > th {
-    @include bg($moon_color, $white_color);
-  }
-  .ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
-  .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
-  .ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td,
-  .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
-    @include bg($button_color, $white_color);
-  }
-  .ant-table {
-    @include bg($moon_color, $white_color);
-  }
+// // dark theme
+// @mixin darkThemes {
+//   @import url('antd/dist/antd.dark.css');
+//   // @import url('./darkTheme.scss');
+//   @include TableTheme($moon_color, $white_color);
+//   @include font-family();
+//   @include bg($dark_moon, $white_color);
+//   .ant-layout {
+//     @include bg($dim_dark);
+//   }
+//   .ant-menu.ant-menu-dark {
+//     @include bg($dark_color);
+//   }
+//   .anticon-menu-fold,
+//   .anticon-menu-unfold {
+//     color: $white_color;
+//   }
+//   // .anticon-menu-fold {
+//   //   .ant-layout-header {
+//   //     margin-left: 30px !important;
+//   //   }
+//   // }
+//   .ant-layout-header {
+//     @include bg($dark_color);
+//     position: relative;
+//   }
+//   .ant-layout-footer {
+//     @include bg($dark_color);
+//   }
+//   .content_height {
+//     padding: 0 !important;
+//   }
+//   .ant-table-thead > tr > th {
+//     @include bg($moon_color, $white_color);
+//   }
+//   .ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
+//   .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
+//   .ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td,
+//   .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
+//     @include bg($button_color, $white_color);
+//   }
+//   .ant-table {
+//     @include bg($moon_color, $white_color);
+//   }
 
-  h4 {
-    @include bg('', $white_color);
-  }
-  .logout_footer {
-    .ant-btn {
-      @include bg($button_color, $white_color);
-    }
-  }
-  .ant-layout-sider {
-    @include bg($dark_color);
-  }
-}
+//   h4 {
+//     @include bg('', $white_color);
+//   }
+//   .logout_footer {
+//     .ant-btn {
+//       @include bg($button_color, $white_color);
+//     }
+//   }
+//   .ant-layout-sider {
+//     @include bg($dark_color);
+//   }
+// }
 
-// Light theme
-@mixin lightThemes {
-  @import url('antd/dist/antd.css');
-  // @import './LightTheme.scss';
-  // @import url('./LightTheme.scss');
-  @include TableTheme($dark_moon, $white_color);
-  @include bg($white_color, $moon_color);
-  .ant-menu {
-    @include bg($dark_moon, $white_color);
-  }
-  .ant-layout {
-    @include bg($white_color);
-  }
-  .ant-layout-sider {
-    @include bg($dark_moon);
-  }
-  .ant-layout-header {
-    @include bg($dark_moon);
-    position: relative;
-  }
-  .content_height {
-    padding: 0 !important;
-  }
-  .anticon-menu-fold,
-  .anticon-menu-unfold {
-    @include bg('', $white_color);
-  }
-  .ant-table-thead > tr > th {
-    @include bg($button_color);
-  }
-  .ant-layout-footer {
-    @include bg($dark_moon);
-  }
-  .logout_footer {
-    .ant-btn {
-      @include bg($button_color, $white_color);
-    }
-  }
-}
+// // Light theme
+// @mixin lightThemes {
+//   @import url('antd/dist/antd.css');
+//   // @import './LightTheme.scss';
+//   // @import url('./LightTheme.scss');
+//   @include TableTheme($dark_moon, $white_color);
+//   @include bg($white_color, $moon_color);
+//   .ant-menu {
+//     @include bg($dark_moon, $white_color);
+//   }
+//   .ant-layout {
+//     @include bg($white_color);
+//   }
+//   .ant-layout-sider {
+//     @include bg($dark_moon);
+//   }
+//   .ant-layout-header {
+//     @include bg($dark_moon);
+//     position: relative;
+//   }
+//   .content_height {
+//     padding: 0 !important;
+//   }
+//   .anticon-menu-fold,
+//   .anticon-menu-unfold {
+//     @include bg('', $white_color);
+//   }
+//   .ant-table-thead > tr > th {
+//     @include bg($button_color);
+//   }
+//   .ant-layout-footer {
+//     @include bg($dark_moon);
+//   }
+//   .logout_footer {
+//     .ant-btn {
+//       @include bg($button_color, $white_color);
+//     }
+//   }
+// }

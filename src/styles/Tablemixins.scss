@@ -1,0 +1,88 @@
+@mixin TableTheme($background: '', $col: '') {
+  .table_container {
+    @include fontFamily();
+    display: block;
+    max-width: 100%;
+    .tableWrap {
+      display: block;
+      max-width: 99%;
+      overflow-y: hidden;
+      // overflow-x: hidden;
+      // border-bottom: 1px solid black;
+    }
+    table {
+      @include widthHeight(100%);
+      // width: 100%;
+      border-spacing: 0;
+      thead {
+        th {
+          input {
+            @include bg($background, $col);
+            @include borderRadius(1px solid, 5px);
+            padding-left: 3px;
+            // border: 1px solid !important;
+            // border-radius: 5px;
+          }
+        }
+      }
+      tr {
+        th {
+          @include bg($background, $col);
+        }
+      }
+      tr {
+        :last-child {
+          td {
+            border-bottom: 0;
+          }
+        }
+      }
+
+      th,
+      td {
+        @include widthHeight(100px);
+        @include borderRadius(1px solid);
+
+        margin: 0;
+        padding: 0.5rem;
+        border-bottom: 1px solid black;
+        // border: 1px solid;
+        &.collapse {
+          @include widthHeight(0.0000000001%);
+        }
+
+        :last-child {
+          border-right: 0;
+        }
+      }
+    }
+
+    .pagination {
+      padding: 0.5rem;
+      display: flex;
+      justify-content: flex-end;
+      button {
+        @include widthHeight(30px);
+        @include bg($background, $col);
+        @include borderRadius(0.1px solid, 4px);
+        margin-right: 5px;
+      }
+      button:active {
+        @include borderRadius(0.1px solid);
+      }
+      .page_input_and_row_select {
+        .pageNumber_input {
+          @include widthHeight(100px);
+          @include bg($background, $col);
+          @include borderRadius(1.5px solid $background, 5px);
+          padding-left: 4px;
+          margin-right: 10px;
+        }
+      }
+      select {
+        @include bg($background, $col);
+        @include borderRadius('', 5px);
+      }
+    }
+  }
+}

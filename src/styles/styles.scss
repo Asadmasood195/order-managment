@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
 @import 'variables';
 @import './mixins.scss';
+@import './Tablemixins.scss';
+@import './darkmixins.scss';
+@import './Lightmixins.scss';
 * {
   margin: 0;
   padding: 0;
