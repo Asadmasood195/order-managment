@@ -11,7 +11,8 @@ import {
 import '../../styles/styles.scss'
 import './dashboard.scss'
 import { Footer } from 'antd/lib/layout/layout'
-import ReportsTable from '../Tables/ReportsTable'
+import BlotterTableV3 from '../Tables/ReportsTable'
+// import ReportsTable from '../Tables/ReportsTable'
 import CustomersTable from '../Tables/CustomersTable'
 import ProductsTable from '../Tables/ProductsTable'
 const { Header, Sider, Content } = Layout
@@ -95,13 +96,8 @@ const Dashboard = ({ history }) => {
                         </Switch>
                     </Header>
                     <Content
-                        className='site-layout-background content_height'
-                        style={{
-                            margin: '24px 16px',
-                            padding: 24,
-                            minHeight: 470
-                        }}>
-                        {TableA && <ReportsTable />}
+                        className='site-layout-background content_height'>
+                        {TableA && <BlotterTableV3 />}
                         {TableB && <CustomersTable />}
                         {TableC && <ProductsTable />}
 

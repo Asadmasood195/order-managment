@@ -1,116 +1,244 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
+import { useTable, usePagination, useGlobalFilter, useAsyncDebounce } from 'react-table'
+import './styleTable.scss'
+import makeData from './makeData'
 
-import { Table, Input, InputNumber, Popconfirm, Form, Typography, Select } from 'antd'
-const originData = []
-const { Option } = Select
-for (let i = 0; i < 100; i++) {
-    originData.push({
-        key: i.toString(),
-        name: `Edrward ${i}`,
-        age: 32,
-        stock: true,
-        address: `London Park no. ${i}`,
-    })
+// Define a default UI for filtering
+function GlobalFilter({
+  preGlobalFilteredRows,
+  globalFilter,
+  setGlobalFilter,
+}) {
+  const count = preGlobalFilteredRows.length
+  const [value, setValue] = React.useState(globalFilter)
+  const onChange = useAsyncDebounce(value => {
+    setGlobalFilter(value || undefined)
+  }, 200)
+
+  return (
+    <span>
+      Search:{' '}
+      <input
+        value={value || ""}
+        onChange={e => {
+          setValue(e.target.value)
+          onChange(e.target.value)
+        }}
+        placeholder={`${count} records...`}
+        style={{
+          fontSize: '1.1rem',
+        }}
+      />
+    </span>
+  )
 }
+function Table({ columns, data }) {
+  // Use the state and functions returned from useTable to build your UI
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    prepareRow,
+    page, // Instead of using 'rows', we'll use page,
+    // which has only the rows for the active page
 
-const ReportsTable = () => {
-    const [form] = Form.useForm()
-    const [data, setData] = useState(originData)
-    const [editingKey, setEditingKey] = useState('')
+    // The rest of these things are super handy, too ;)
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    setPageSize,
+    state: { pageIndex, pageSize },
+    visibleColumns,
+    globalFilter,
+    preGlobalFilteredRows,
+    setGlobalFilter,
+  } = useTable(
+    {
+      columns,
+      data,
+      initialState: { pageIndex: 2 },
+    },
+    useGlobalFilter,
+    usePagination,
+  )
 
-    const isEditing = (record) => record.key === editingKey
+  // Render the UI for your table
+  return (
+    <>
 
-    const columns = [
-        {
-            title: 'Product Id',
-            dataIndex: 'key',
-            width: '10%',
-            // editable: true,
-        },
-        {
-            title: 'Prodcut Name',
-            dataIndex: 'name',
-            width: '15%',
-            // editable: true,
-        },
-        {
-            title: 'Unit Price',
-            dataIndex: 'age',
-            width: '15%',
-            // editable: true,
-        },
-        {
-            title: 'Package',
-            dataIndex: 'age',
-            width: '15%',
-            // editable: true,
-        },
-        {
-            title: 'Is Discountined',
-            dataIndex: 'key',
-            width: '15%',
-            // editable: true,
-        },
-        {
-            title: 'Supplier',
-            dataIndex: 'address',
-            width: '20%',
-            // editable: true,
-        },
-
-    ]
-    const mergedColumns = columns.map((col) => {
-        if (!col.editable) {
-            return col
-        }
-
-        return {
-            ...col,
-            onCell: (record) => ({
-                record,
-                inputType: col.dataIndex === 'age' ? 'number' : 'text',
-                dataIndex: col.dataIndex,
-                title: col.title,
-                editing: isEditing(record),
-            }),
-        }
-    })
-    return (
-        <Fragment>
-            <h4 className='h3'>Top Selling Products|Tabular Representation</h4>
-            <span>Filter Options:</span>  <Select
-                showSearch
-                style={{ width: 200 }}
-                placeholder="Search to Select"
-                optionFilterProp="children"
-                filterOption={(input, option) =>
-                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                }
-                filterSort={(optionA, optionB) =>
-                    optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-                }
-            >
-                <Option value="1">Not Identified</Option>
-                <Option value="2">Closed</Option>
-                <Option value="3">Communicated</Option>
-                <Option value="4">Identified</Option>
-                <Option value="5">Resolved</Option>
-                <Option value="6">Cancelled</Option>
-            </Select>
-            <br />
-            <br />
-            <Form form={form} component={false}>
-                <Table
-                    bordered
-                    dataSource={data}
-                    columns={mergedColumns}
-                    rowClassName="editable-row"
-                    scroll={{ x: 'calc(400px + 50%)', y: 240 }}
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map(headerGroup => (
+            <Fragment>
+              {/* <tr> */}
+              <th
+                colSpan={visibleColumns.length}
+                style={{
+                  textAlign: 'left',
+                  border: '0'
+                }}
+              >
+                <GlobalFilter
+                  preGlobalFilteredRows={preGlobalFilteredRows}
+                  globalFilter={globalFilter}
+                  setGlobalFilter={setGlobalFilter}
                 />
-            </Form>
-        </Fragment>
-    )
+              </th>
+              {/* </tr> */}
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map(column => (
+                  <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                ))}
+              </tr>
+            </Fragment>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {page.map((row, i) => {
+            prepareRow(row)
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map(cell => {
+                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                })}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+
+      <div className="pagination">
+        <button className='start_btn' onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          {'<<'}
+        </button>{' '}
+        <button className='previous_btn' onClick={() => previousPage()} disabled={!canPreviousPage}>
+          {'<'}
+        </button>{' '}
+        <button className='next_btn' onClick={() => nextPage()} disabled={!canNextPage}>
+          {'>'}
+        </button>{' '}
+        <button className='end_btn' onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+          {'>>'}
+        </button>{' '}
+        <span>
+          Page{' '}
+          <strong>
+            {pageIndex + 1} of {pageOptions.length}
+          </strong>{' '}
+        </span>
+        <span className='page_input_and_row_select'>
+          | Go to page:{' '}
+          <input
+            type="number"
+            className='pageNumber_input'
+            defaultValue={pageIndex + 1}
+            onChange={e => {
+              const page = e.target.value ? Number(e.target.value) - 1 : 0
+              gotoPage(page)
+            }}
+          // style={{ width: '100px', border: '1px soild', borderRadius: '5px solid' }}
+          />
+        </span>{' '}
+        <select
+          value={pageSize}
+          onChange={e => {
+            setPageSize(Number(e.target.value))
+          }}
+        >
+          {[10, 20, 30, 40, 50].map(pageSize => (
+            <option key={pageSize} value={pageSize}>
+              Show {pageSize}
+            </option>
+          ))}
+        </select>
+      </div>
+    </>
+  )
 }
 
-export default ReportsTable
+function App() {
+  // const columns = React.useMemo(
+  //   () => [
+  //     {
+  //       Header: '',
+  //       columns: [
+  //         {
+  //           Header: 'First Name',
+  //           accessor: 'firstName',
+  //         },
+  //         {
+  //           Header: 'Last Name',
+  //           accessor: 'lastName',
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       Header: '',
+  //       columns: [
+  //         {
+  //           Header: 'Age',
+  //           accessor: 'age',
+  //         },
+  //         {
+  //           Header: 'Visits',
+  //           accessor: 'visits',
+  //         },
+  //         {
+  //           Header: 'Status',
+  //           accessor: 'status',
+  //         },
+  //         {
+  //           Header: 'Profile Progress',
+  //           accessor: 'progress',
+  //         },
+  //       ],
+  //     },
+  //   ],
+  //   []
+  // )
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: 'First Name',
+        accessor: 'firstName', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Last Name',
+        accessor: 'lastName',
+      },
+      {
+        Header: 'Age',
+        accessor: 'age',
+      },
+      {
+        Header: 'Visits',
+        accessor: 'visits',
+      },
+      {
+        Header: 'Status',
+        accessor: 'status',
+      },
+      {
+        Header: 'Profile Progress',
+        accessor: 'progress',
+      },
+    ],
+    []
+  )
 
+  const data = React.useMemo(() => makeData(100000), [])
+
+  return (
+    <div className='table_container'>
+      <div className="tableWrap">
+        <Table columns={columns} data={data} />
+      </div>
+    </div>
+  )
+}
+
+export default App

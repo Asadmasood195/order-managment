@@ -9,7 +9,7 @@ html {
 }
 
 .parent_login {
-  @include bg($white_background);
+  @include bg($dark_color);
   @include font-family();
   min-height: 100vh;
   position: relative;
@@ -32,6 +32,7 @@ html {
   &::after {
     @include visibility('', 0.8);
     @include topLeft(0, 0);
+    @include bg($dark_color);
     content: '';
     position: absolute;
     right: 0;
@@ -39,7 +40,8 @@ html {
     background-repeat: no-repeat;
     background-position: left bottom;
     background-size: 500px;
-    background-image: url($login_image);
+    @include bg(#adb8c2);
+    // background-image: url('./login.png');
   }
 
   .signup {
