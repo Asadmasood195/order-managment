@@ -62,7 +62,7 @@ const Dashboard = ({ history }) => {
                         <div className="logo" />
                     </Header>
                     <Menu
-                        theme={theme}
+                        // theme={theme}
                         mode="inline" defaultSelectedKeys={['1']}>
                         <Menu.Item key="1" icon={<UserOutlined />} onClick={showReportsTable}>
                             Reports

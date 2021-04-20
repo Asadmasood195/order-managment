@@ -3,13 +3,19 @@
   @import url('antd/dist/antd.dark.css');
   @include TableTheme($moon_color, $white_color);
   @include fontFamily();
-  @include bg($dark_moon, $white_color);
+  @include bg($dim_dark, $white_color);
   .ant-layout {
     @include bg($dim_dark);
   }
-  .ant-menu.ant-menu-dark {
-    @include bg($dark_color);
+  .ant-menu {
+    @include bg($dark_color, $white_color);
+    .ant-menu-item {
+      @include fontFamily($sub_heading);
+    }
   }
+  // .ant-menu.ant-menu-dark {
+  //   @include bg($dark_color);
+  // }
   .anticon-menu-fold,
   .anticon-menu-unfold {
     color: $white_color;
