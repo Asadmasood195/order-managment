@@ -32,7 +32,8 @@ html {
   &::after {
     @include visibility('', 0.8);
     @include topLeft(0, 0);
-    @include bg($dark_color);
+    // @include bg($dark_color);
+    @include bg(#adb8c2);
     content: '';
     position: absolute;
     right: 0;
@@ -40,7 +41,6 @@ html {
     background-repeat: no-repeat;
     background-position: left bottom;
     background-size: 500px;
-    @include bg(#adb8c2);
     // background-image: url('./login.png');
   }
 

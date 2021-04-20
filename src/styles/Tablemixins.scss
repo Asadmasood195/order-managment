@@ -13,6 +13,7 @@
     table {
       @include fontFamily($normal_font);
       @include widthHeight(100%);
+      // overflow: visible;
       border-spacing: 0;
       thead {
         th {
@@ -63,6 +64,7 @@
       padding: 0.5rem;
       display: flex;
       justify-content: flex-end;
+      min-width: max-content;
       button {
         @include widthHeight(30px);
         @include bg($background, $col);
@@ -74,11 +76,11 @@
       }
       .page_input_and_row_select {
         .pageNumber_input {
-          @include widthHeight(100px);
+          @include widthHeight(70px);
           @include bg($background, $col);
           @include borderRadius(1.5px solid $background, 5px);
           padding-left: 4px;
-          margin-right: 10px;
+          margin-right: 5px;
         }
       }
       select {
