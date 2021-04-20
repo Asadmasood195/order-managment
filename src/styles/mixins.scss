@@ -57,6 +57,27 @@
     background-color: $hover;
   }
 }
+@mixin Button(
+  $width: '',
+  $height: '',
+  $bg: '',
+  $col: '',
+  $border: '',
+  $radius: '',
+  $hover: ''
+) {
+  width: $width;
+  height: $height;
+  background-color: $bg;
+  color: $col;
+  border: $border;
+  border-radius: $radius;
+  outline: none;
+  button:hover,
+  button:focus {
+    background-color: $hover;
+  }
+}
 
 // .container {
 //   &.active {
