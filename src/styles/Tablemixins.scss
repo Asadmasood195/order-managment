@@ -19,6 +19,9 @@
     //   input {
     //     // @include fontFamily($normal_font);
     //   }
+    .btn_search {
+      @include button($col, $background);
+    }
   }
   .table_container {
     @include fontFamily();

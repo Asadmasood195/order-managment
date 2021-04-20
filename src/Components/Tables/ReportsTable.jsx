@@ -53,6 +53,7 @@ function GlobalFilter({
           fontSize: '14px',
         }}
       /> */}
+      <button className='btn_search'>Search</button>
     </span>
   )
 }

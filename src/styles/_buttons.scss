@@ -1,0 +1,137 @@
+@mixin rounded($border) {
+  -webkit-border-radius: $border;
+  -moz-border-radius: $border;
+  border-radius: $border;
+}
+
+@mixin shadow {
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+//  BUTTON MIXIN
+@mixin button($hover: '', $bg: '', $col: '') {
+  display: inline-block;
+  //   padding: 0.5em 2em 0.55em;
+  margin: 3px;
+  width: 80px;
+  height: 33px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  background-color: $bg;
+  color: $col;
+  text-decoration: none;
+  border-radius: 3px;
+  @include rounded('.5em');
+  //this determines Mozilla to show the padding
+  border: solid 1px #ccc;
+  @include shadow;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  &:hover {
+    background-color: $hover;
+    color: $bg;
+    text-decoration: none;
+  }
+  &:active {
+    background-color: $hover;
+    position: relative;
+    top: 1px;
+  }
+}
+
+//  BUTTON MIXIN
+// ------------------------------
+// @mixin button($button-color: '', $button-type: '', $button-border: '', $button-size: '') {
+// 	// Standard Button Styles
+// 	@include border-radius(5px);
+// 	@include transition(.3s ease-in-out);
+// 	display: inline-block;
+// 	border: 2px solid $button-color;
+// 	padding: 10px 30px 8px;
+// 	color: $button-color;
+// 	text-decoration: none;
+// 	text-transform: uppercase;
+// 	font-weight: bold;
+// 	// Button Hover Styles
+// 	&:hover {
+// 		border-color: $black;
+// 		color: $black;
+// 	}
+// 	// Foreach Loop
+// 	// Using the Color Variations in _variables.scss
+// 	@each $i in $color-list {
+// 		$alt-color: nth($i, 3);
+// 		&.#{nth($i, 2)}-#{nth($i, 1)} {
+// 			color: $alt-color;
+// 			border-color: $alt-color;
+// 			&:hover {
+// 				border-color: $black;
+// 				color: $black;
+// 			}
+// 		}
+// 	}
+
+// 	// Button Size (small or normal (or no value) )
+// 	@if $button-size == small {
+// 		@include font-size(13);
+// 		padding: 6px 30px 3px;
+// 	} @else {
+// 		&.button-small {
+// 			font-size: 13px;
+// 			padding: 6px 30px 3px;
+// 		}
+// 	}
+
+// 	// Button Fill
+// 	// solid: color is the filled background color w/white text
+// 	// normal or no value: color is the border & text color
+// 	@if $button-type == solid {
+// 		background: $button-color;
+// 		color: $light;
+// 		@if $button-color == $light {
+// 			color: $dark !important;
+// 		}
+// 		&:hover {
+// 			border-color: $dark;
+// 			background: $dark;
+// 			color: $light;
+// 		}
+// 	} @else {
+// 		&.button-solid {
+// 			background: $button-color;
+// 			color: $white;
+// 			@each $i in $color-list {
+// 				$alt-color: nth($i, 3);
+// 				&.#{nth($i, 2)}-#{nth($i, 1)} {
+// 					background: $alt-color;
+// 					@if $alt-color == $white {
+// 						color: $black;
+// 					}
+// 				}
+// 			}
+// 			&:hover {
+// 				border-color: $black;
+// 				background: $black;
+// 				color: $white;
+// 			}
+// 		}
+// 	}
+
+// 	// Button Border
+// 	// bordered: border is white
+// 	// normal or no value: border is colored
+// 	@if $button-border == bordered {
+// 		border-color: $white !important;
+// 		&:hover {
+// 			border-color: $black;
+// 		}
+// 	} @else {
+// 		&.button-bordered { border-color: $white !important; }
+// 	}
+// }
+
+// Declare your default button
+// .button {
+// 	@include button($red, normal, normal, normal);
+// }
