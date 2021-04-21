@@ -31,6 +31,14 @@ const Dashboard = ({ history }) => {
         localStorage.setItem('theme', value ? 'dark' : 'light')
 
     }
+    const [state, setstate] = useState([
+        { key: 0, status: true },
+        { key: 1, status: false },
+        { key: 2, status: false },
+        { key: 3, status: false },
+        { key: 4, status: false },
+        { key: 5, status: false },
+    ])
 
     const toggle = () => {
         setCollapsed(!collapsed)
@@ -40,7 +48,7 @@ const Dashboard = ({ history }) => {
         setTableB(false)
         setTableC(false)
     }
-    const showCustomersTable = () => {
+    const showCustomersTable = (e) => {
         setTableA(false)
         setTableB(true)
         setTableC(false)
