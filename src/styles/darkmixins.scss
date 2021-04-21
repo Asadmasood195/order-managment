@@ -4,47 +4,49 @@
   @include TableTheme($moon_color, $white_color, $dark_color);
   @include fontFamily();
   @include bg($dim_dark, $white_color);
-  .ant-layout {
-    @include bg($dim_dark);
-  }
-  .ant-menu {
-    @include bg($dark_color, $white_color);
-    .ant-menu-item {
-      @include fontFamily($sub_heading);
-    }
-  }
-  // .ant-menu.ant-menu-dark {
-  //   @include bg($dark_color);
-  // }
-  .anticon-menu-fold,
-  .anticon-menu-unfold {
-    color: $white_color;
-  }
-  // .anticon-menu-fold {
-  //   .ant-layout-header {
-  //     margin-left: 30px !important;
-  //   }
-  // }
-  .ant-layout-header {
-    @include fontFamily($normal_font);
-    @include bg($dark_color);
-    position: relative;
-  }
-  .ant-layout-footer {
-    @include bg($dark_color);
-  }
+  @include antD($dark_moon, $dim_dark, $moon_color);
   .content_height {
     padding: 0 !important;
   }
   h4 {
     @include bg('', $white_color);
   }
-  .logout_footer {
-    .ant-btn {
-      @include bg($button_color, $white_color);
-    }
-  }
-  .ant-layout-sider {
-    @include bg($dark_color);
-  }
+  // .ant-layout {
+  //   @include bg($dim_dark);
+  // }
+  // .ant-menu {
+  //   @include bg($dark_color, $white_color);
+  //   .ant-menu-item {
+  //     @include fontFamily($sub_heading);
+  //   }
+  // }
+  // .ant-menu.ant-menu-dark {
+  //   @include bg($dark_color);
+  // }
+  // .anticon-menu-fold,
+  // .anticon-menu-unfold {
+  //   color: $white_color;
+  // }
+  // .anticon-menu-fold {
+  //   .ant-layout-header {
+  //     margin-left: 30px !important;
+  //   }
+  // }
+  // .ant-layout-header {
+  //   @include fontFamily($normal_font);
+  //   @include bg($dark_color);
+  //   position: relative;
+  // }
+  // .ant-layout-footer {
+  //   @include bg($dark_color);
+  // }
+
+  // .logout_footer {
+  //   .ant-btn {
+  //     @include bg($button_color, $white_color);
+  //   }
+  // }
+  // .ant-layout-sider {
+  //   @include bg($dark_color);
+  // }
 }

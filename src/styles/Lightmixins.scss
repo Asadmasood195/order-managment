@@ -3,39 +3,41 @@
   @import url('antd/dist/antd.css');
   @include TableTheme($dark_moon, $white_color);
   @include bg($white_color, $moon_color);
-  .ant-menu {
-    @include bg($dark_moon, $white_color);
-    .ant-menu-item {
-      @include fontFamily($sub_heading);
-    }
-  }
-  .ant-layout {
-    @include bg($white_color);
-  }
-  .ant-layout-sider {
-    @include fontFamily($normal_font);
-    @include bg($dark_moon);
-  }
-  .ant-layout-header {
-    @include bg($dark_moon);
-    position: relative;
-    .theme_switch {
-      @include bg($dim_dark);
-    }
-  }
+  @include antD($dark_moon, $white_color, $dim_dark);
   .content_height {
     padding: 0 !important;
   }
-  .anticon-menu-fold,
-  .anticon-menu-unfold {
-    @include bg('', $white_color);
-  }
-  .ant-layout-footer {
-    @include bg($dark_moon);
-  }
-  .logout_footer {
-    .ant-btn {
-      @include bg($button_color, $white_color);
-    }
-  }
+  // .ant-menu {
+  //   @include bg($dark_moon, $white_color);
+  //   .ant-menu-item {
+  //     @include fontFamily($sub_heading);
+  //   }
+  // }
+  // .ant-layout {
+  //   @include bg($white_color);
+  // }
+  // .ant-layout-sider {
+  //   @include fontFamily($normal_font);
+  //   @include bg($dark_moon);
+  // }
+  // .ant-layout-header {
+  //   @include bg($dark_moon);
+  //   position: relative;
+  //   .theme_switch {
+  //     @include bg($dim_dark);
+  //   }
+  // }
+
+  // .anticon-menu-fold,
+  // .anticon-menu-unfold {
+  //   @include bg('', $white_color);
+  // }
+  // .ant-layout-footer {
+  //   @include bg($dark_moon);
+  // }
+  // .logout_footer {
+  //   .ant-btn {
+  //     @include bg($button_color, $white_color);
+  //   }
+  // }
 }

@@ -5,12 +5,11 @@
 // @import '../../styles/input';
 
 body {
+  @include antD();
   .darkTheme {
-    // @import url('../../styles/darkTheme.scss');
     @include darkThemes();
   }
   .lightTheme {
-    // @import url('../../styles/LightTheme.scss');
     @include lightThemes();
   }
   .theme_switch {
@@ -18,15 +17,15 @@ body {
     right: 1rem;
     top: 1rem;
   }
-  .ant-layout {
-    @include bg($dark_moon);
-  }
-  .ant-layout-footer {
-    position: absolute;
-    bottom: 5px;
-    @include bg($moon_color);
-    @include widthHeight(100%);
-  }
+  // .ant-layout {
+  //   @include bg($dark_moon);
+  // }
+  // .ant-layout-footer {
+  //   position: absolute;
+  //   bottom: 5px;
+  //   @include bg($moon_color);
+  //   @include widthHeight(100%);
+  // }
   .logo {
     float: left;
     @include widthHeight(120px, 31px);

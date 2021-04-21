@@ -12,17 +12,11 @@
       @include borderRadius('', 5px);
       @include bg($background, $col);
     }
-    //   input {
-    //     @include input(200px, 30px, 1px solid, 5px);
-    //   }
-    // }
-    //   input {
-    //     // @include fontFamily($normal_font);
-    //   }
     .btn_search {
       @include button($col, $othere);
     }
   }
+
   .table_container {
     @include fontFamily();
     display: block;
@@ -89,7 +83,10 @@
       display: flex;
       justify-content: flex-end;
       min-width: max-content;
+      //  .btn_search {
+      // }
       button {
+        // @include button($col, $othere);
         @include widthHeight(30px);
         @include bg($background, $col);
         @include borderRadius(0.1px solid, 4px);
