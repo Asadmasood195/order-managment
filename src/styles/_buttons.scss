@@ -12,12 +12,14 @@
 //  BUTTON MIXIN
 @mixin button($hover: '', $bg: '', $col: '') {
   @include bg($bg, $col);
-  // @include wid
+  @include rounded('.5em');
+  @include shadow;
+  @include widthHeight(80px, 33px);
   display: inline-block;
   //   padding: 0.5em 2em 0.55em;
   margin: 3px;
-  width: 80px;
-  height: 33px;
+  // width: 80px;
+  // height: 33px;
   outline: none;
   cursor: pointer;
   text-align: center;
@@ -25,18 +27,18 @@
   // color: $col;
   text-decoration: none;
   border-radius: 3px;
-  @include rounded('.5em');
   //this determines Mozilla to show the padding
   border: solid 1px #ccc;
-  @include shadow;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   &:hover {
-    background-color: $hover;
-    color: $bg;
+    @include bg($hover, $bg);
+    // background-color: $hover;
+    // color: $bg;
     text-decoration: none;
   }
   &:active {
-    background-color: $hover;
+    @include bg($hover, $bg);
+    // background-color: $hover;
     position: relative;
     top: 1px;
   }

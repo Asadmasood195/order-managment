@@ -81,7 +81,7 @@
   }
   .logout_footer {
     .ant-btn {
-      @include button($col, $other);
+      @include button($col, $bg, $white_color);
       @include bg($button_color, $white_color);
     }
   }
