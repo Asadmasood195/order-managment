@@ -2,7 +2,9 @@ import React, { Fragment } from 'react'
 import { useTable, usePagination, useGlobalFilter, useAsyncDebounce } from 'react-table'
 import './styleTable.scss'
 import makeData from './makeData'
+import { Select } from 'antd'
 
+const { Option } = Select
 function GlobalFilter({
     preGlobalFilteredRows,
     globalFilter,
@@ -15,19 +17,43 @@ function GlobalFilter({
     }, 200)
 
     return (
-        <span>
-            Search:{' '}
-            <input
-                value={value || ""}
-                onChange={e => {
-                    setValue(e.target.value)
-                    onChange(e.target.value)
-                }}
-                placeholder={`${count} records...`}
-                style={{
-                    fontSize: '1.1rem',
-                }}
-            />
+        <span className='dropdown_search'>
+            <Select
+                // onChange={e => {
+                //   setValue(e.target.value)
+                //   onChange(e.target.value)
+                // }}
+                showSearch
+                style={{ width: 200 }}
+                placeholder="Search to Select"
+                optionFilterProp="children"
+                globalFilter={(input, option) =>
+                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                }
+            // filterSort={(optionA, optionB) =>
+            //   optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+            // }
+            >
+                <Option value="1">Not Identified</Option>
+                <Option value="2">Closed</Option>
+                <Option value="3">Communicated</Option>
+                <Option value="4">Identified</Option>
+                <Option value="5">Resolved</Option>
+                <Option value="6">Cancelled</Option>
+            </Select>
+            {/* Search:{' '}
+      <input
+        value={value || ""}
+        onChange={e => {
+          setValue(e.target.value)
+          onChange(e.target.value)
+        }}
+        placeholder={`${count} records...`}
+        style={{
+          fontSize: '14px',
+        }}
+      /> */}
+            <button className='btn_search'>Search</button>
         </span>
     )
 }
