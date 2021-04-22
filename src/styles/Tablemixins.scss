@@ -23,29 +23,20 @@
       @include button($col, $background);
     }
   }
-
-  // .table_container {
   @include fontFamily();
-  // display: block;
-  // max-width: 100%;
   .tableWrap {
     display: block;
     max-width: 99%;
     overflow-y: hidden;
-    // overflow-x: hidden;
-    // border-bottom: 1px solid black;
   }
   table {
-    // display: block;
-    // max-width: 100%;
     position: relative;
     @include fontFamily($normal_font);
     @include widthHeight($width, $height);
-    // @include widthHeight(70%);
-    // overflow: visible;
     border-spacing: 0;
     thead {
       th {
+        @include bg('');
         @include fontFamily($sub_heading);
         input {
           @include bg($col, $background);
@@ -69,7 +60,6 @@
         }
       }
     }
-
     th,
     td {
       @include widthHeight(120px);
@@ -80,12 +70,16 @@
       margin: 0;
       padding: 0.5rem;
       border-bottom: 1px solid black;
+
       &.collapse {
         @include widthHeight(0.0000000001%);
       }
       :last-child {
         border-right: 0;
       }
+    }
+    td {
+      @include bg($othere, $col);
     }
   }
 
