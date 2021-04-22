@@ -14,13 +14,15 @@ import { Footer } from 'antd/lib/layout/layout'
 import BlotterTableV3 from '../Tables/ReportsTable'
 import CustomersTable from '../Tables/CustomersTable'
 import ProductsTable from '../Tables/ProductsTable'
+import useWindowDimensions from '../Window Dimension/useWindowDimensions'
 const { Header, Sider, Content } = Layout
 
 
 const Dashboard = ({ history }) => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || localStorage.setItem('theme', 'light'))
     const [themetoggle, setThemeToggle] = useState(localStorage.getItem('theme') === 'light' ? false : true)
-    const [collapsed, setCollapsed] = useState(false)
+    const { width } = useWindowDimensions()
+    const [collapsed, setCollapsed] = useState(width < 700 ? true : false)
     const [TableA, setTableA] = useState(true)
     const [TableB, setTableB] = useState(false)
     const [TableC, setTableC] = useState(false)
