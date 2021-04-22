@@ -1,10 +1,10 @@
 // dark theme
 @mixin darkThemes {
   @import url('antd/dist/antd.dark.css');
-  @include TableTheme($moon_color, $white_color, $dark_color);
+  @include TableTheme($moon_color, $white_color, $dark_color, 100%);
   @include fontFamily();
   @include bg($dim_dark, $white_color);
-  @include antD($dark_moon, $dim_dark, $moon_color);
+  @include antD($dark_moon, $dim_dark, $moon_color, 100%);
   .content_height {
     padding: 0 !important;
   }

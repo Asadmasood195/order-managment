@@ -1,5 +1,6 @@
+
 import React, { Fragment } from 'react'
-import { useTable, usePagination, useGlobalFilter, useAsyncDebounce } from 'react-table'
+import { useTable, usePagination, useGlobalFilter, useAsyncDebounce, ReactTable } from 'react-table'
 import './styleTable.scss'
 import makeData from './makeData'
 import { Select } from 'antd'
@@ -57,6 +58,7 @@ function GlobalFilter({
     </span>
   )
 }
+
 function Table({ columns, data }) {
   const {
     getTableProps,
@@ -217,6 +219,7 @@ function App() {
       <div className='table_container'>
         <div className="tableWrap">
           <Table columns={columns} data={data} />
+
         </div>
       </div>
     </Fragment>

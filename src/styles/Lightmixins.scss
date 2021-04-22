@@ -1,7 +1,7 @@
 // Light theme
 @mixin lightThemes {
   @import url('antd/dist/antd.css');
-  @include TableTheme($dark_moon, $white_color);
+  @include TableTheme($dark_moon, $white_color, $dim_dark, 100%);
   @include bg($white_color, $moon_color);
   @include antD($dark_moon, $white_color, $dim_dark);
   .content_height {
