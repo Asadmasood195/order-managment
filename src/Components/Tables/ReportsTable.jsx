@@ -1,6 +1,6 @@
 
 import React, { Fragment } from 'react'
-import { useTable, usePagination, useGlobalFilter, useAsyncDebounce, ReactTable } from 'react-table'
+import { useTable, usePagination, useGlobalFilter, useAsyncDebounce } from 'react-table'
 import './styleTable.scss'
 import makeData from './makeData'
 import { Select } from 'antd'
@@ -210,16 +210,13 @@ function App() {
     ],
     []
   )
-
   const data = React.useMemo(() => makeData(100), [])
-
   return (
     <Fragment>
       <h4>Top selling Products |Tabular Representation</h4>
       <div className='table_container'>
         <div className="tableWrap">
           <Table columns={columns} data={data} />
-
         </div>
       </div>
     </Fragment>

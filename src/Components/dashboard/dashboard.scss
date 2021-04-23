@@ -41,6 +41,9 @@ body {
     margin: 24px 16px !important;
     padding: 24px !important;
   }
+  .table_container {
+    @include TableTheme($dark_moon, $white_color, $dim_dark, 100%);
+  }
   .table_products {
     @include TableTheme($dim_dark, $white_color, $dark_color, 80%);
   }

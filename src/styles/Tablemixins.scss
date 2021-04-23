@@ -20,7 +20,7 @@
       @include bg($background, $col);
     }
     .btn_search {
-      @include button($col, $background);
+      @include button($background, $col);
     }
   }
   @include fontFamily();
