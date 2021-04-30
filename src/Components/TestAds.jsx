@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import AdSense from "react-adsense"
 import { render } from "react-dom"
 
 
