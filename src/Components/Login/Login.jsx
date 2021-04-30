@@ -52,6 +52,9 @@ export default class Login extends Component {
                             </div>
                         </div>
                     </form>
+                    <footer>
+                        <h3>copy right</h3>
+                    </footer>
                 </div>
                 {/* <AdsensComponent /> */}
             </div>
